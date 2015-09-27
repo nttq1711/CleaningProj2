@@ -1,3 +1,4 @@
+library("plyr")
 ## Reading data
 features = read.table("UCI HAR Dataset/features.txt", sep=" ")
 activity_labels = read.table("UCI HAR Dataset/activity_labels.txt")
@@ -42,4 +43,4 @@ colnames(finalData) = colNames;
 
 ## Create new tidy data files
 tidyData = ddply(finalData, .(subject, activity), function(x) colMeans(x[, 1:66]))
-write.table(tidyData, './tidyData.txt',row.names=TRUE,sep='\t')
+write.table(tidyData, './tidyData.txt',row.names=FALSE,sep='\t')
